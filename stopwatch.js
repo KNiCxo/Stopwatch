@@ -5,6 +5,7 @@ const digitThree = document.querySelector('.js-second-one');
 const digitFour = document.querySelector('.js-second-two');
 const digitFive = document.querySelector('.js-minute-one');
 const digitSix = document.querySelector('.js-minute-two');
+const additionalClock = document.querySelector('.js-additional-clock');
 
 // Button elemenents for stopwatch
 const startButtonElement = document.querySelector('.js-start-button');
@@ -14,7 +15,7 @@ const stopButtonElement = document.querySelector('.js-stop-button');
 const stopwatch = () => {
   // Get current time to compare between each interval
   let startTime = Date.now();
-  let timeElapsed;
+  let timeElapsed = 0;
 
   // Gets time elapsed every 1ms and converts to clock format
   setInterval(() => {
@@ -28,6 +29,14 @@ const stopwatch = () => {
     digitFour.innerHTML = Math.floor(timeElapsed / 10000) % 6; // 10 seconds
     digitFive.innerHTML = Math.floor(timeElapsed / 60000) % 10; // 1 minute
     digitSix.innerHTML = Math.floor(timeElapsed / 600000) % 6; // 10 minutes
+
+    // If time has elapsed to an hour, adds additionals clock elements
+    if (timeElapsed > 3600000) {
+      additionalClock.innerHTML = `
+        <span>${Math.floor(timeElapsed / 3600000)}</span>
+        <span>:</span> 
+      `
+    }
   }, 1);
 }
 
