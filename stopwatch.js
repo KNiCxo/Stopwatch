@@ -11,33 +11,41 @@ const additionalClock = document.querySelector('.js-additional-clock');
 const startButtonElement = document.querySelector('.js-start-button');
 const stopButtonElement = document.querySelector('.js-stop-button');
 
+// Used to prevent stopwatch function from running if already running
+let isOn = false;
+
 // Stopwatch function
 const stopwatch = () => {
-  // Get current time to compare between each interval
-  let startTime = Date.now();
-  let timeElapsed = 0;
+  // If stopwatch is not running, then continue
+  if (!isOn) {
+    isOn = true;
 
-  // Gets time elapsed every 1ms and converts to clock format
-  setInterval(() => {
-    timeElapsed = Date.now() - startTime;
+    // Get current time to compare between each interval
+    let startTime = Date.now();
+    let timeElapsed = 0;
 
-    // Divides time elapsed by measurement of time and uses modulo to maintain
-    // a single digit per element. Used floor to remove decimal.
-    digitOne.innerHTML = Math.floor(timeElapsed / 10) % 10; // 10ms
-    digitTwo.innerHTML = Math.floor(timeElapsed / 100) % 10; // 100ms
-    digitThree.innerHTML = Math.floor(timeElapsed / 1000) % 10; // 1 second
-    digitFour.innerHTML = Math.floor(timeElapsed / 10000) % 6; // 10 seconds
-    digitFive.innerHTML = Math.floor(timeElapsed / 60000) % 10; // 1 minute
-    digitSix.innerHTML = Math.floor(timeElapsed / 600000) % 6; // 10 minutes
+    // Gets time elapsed every 1ms and converts to clock format
+    setInterval(() => {
+      timeElapsed = Date.now() - startTime;
 
-    // If time has elapsed to an hour, adds additionals clock elements
-    if (timeElapsed > 3600000) {
-      additionalClock.innerHTML = `
-        <span>${Math.floor(timeElapsed / 3600000)}</span>
-        <span>:</span> 
-      `
-    }
-  }, 1);
+      // Divides time elapsed by measurement of time and uses modulo to maintain
+      // a single digit per element. Used floor to remove decimal.
+      digitOne.innerHTML = Math.floor(timeElapsed / 10) % 10; // 10ms
+      digitTwo.innerHTML = Math.floor(timeElapsed / 100) % 10; // 100ms
+      digitThree.innerHTML = Math.floor(timeElapsed / 1000) % 10; // 1 second
+      digitFour.innerHTML = Math.floor(timeElapsed / 10000) % 6; // 10 seconds
+      digitFive.innerHTML = Math.floor(timeElapsed / 60000) % 10; // 1 minute
+      digitSix.innerHTML = Math.floor(timeElapsed / 600000) % 6; // 10 minutes
+
+      // If time has elapsed to an hour, adds additionals clock elements
+      if (timeElapsed > 3600000) {
+        additionalClock.innerHTML = `
+          <span>${Math.floor(timeElapsed / 3600000)}</span>
+          <span>:</span> 
+        `
+      }
+    }, 1);
+  }
 }
 
 // Clicking the start button will run the stopwatch function
