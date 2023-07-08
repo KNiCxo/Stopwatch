@@ -9,7 +9,7 @@ const additionalClock = document.querySelector('.js-additional-clock');
 
 // Button elemenents for stopwatch
 const startButtonElement = document.querySelector('.js-start-button');
-const stopButtonElement = document.querySelector('.js-reset-button');
+const resetButtonElement = document.querySelector('.js-reset-button');
 
 // Used to check if stopwatch is running
 let isOn = false;
@@ -23,7 +23,6 @@ let timeBank = 0;
 // Stores time elapsed while stopwatch is running
 let timeElapsed = 0;
 
-// Stopwatch function
 const stopwatch = () => {
   // Get current time to compare between each interval
   let startTime = Date.now();
@@ -46,22 +45,44 @@ const stopwatch = () => {
       digitFive.innerHTML = Math.floor((timeBank + timeElapsed) / 60000) % 10; // 1 minute
       digitSix.innerHTML = Math.floor((timeBank + timeElapsed) / 600000) % 6; // 10 minutes
 
-      // If time has elapsed to an hour, adds additionals clock elements
+      // If time has elapsed to an hour, adds additionals clock element
       if (timeElapsed > 3600000) {
         additionalClock.innerHTML = `
           <span>${Math.floor((timeBank + timeElapsed) / 3600000)}</span>
           <span>:</span> 
-        `
+        `;
       }
     }, 1);
   } else {
-    // Else, turn off timer, store time elapsed in timeBank variable and make the stop button say 'Start'
-    isOn = false;
+    // Else, stops stopwatch and stores time elapsed in timeBank
+    stop();
     timeBank += timeElapsed;
-    clearInterval(intervalID);
-    startButtonElement.innerHTML = 'Start';
   }
 }
 
-// Clicking the start button will run the stopwatch function
+const reset = () => {
+  // Stops stopwatch if running, sets timeBank to 0, and clears clock HTML
+  stop();
+  timeBank = 0;
+
+  digitOne.innerHTML = 0;
+  digitTwo.innerHTML = 0;
+  digitThree.innerHTML = 0;
+  digitFour.innerHTML = 0;
+  digitFive.innerHTML = 0;
+  digitSix.innerHTML = 0;
+  additionalClock.innerHTML = ''
+}
+
+function stop() {
+  // Stops stopwatch and changes stop button to 'Start'
+  isOn = false;
+  clearInterval(intervalID);
+  startButtonElement.innerHTML = 'Start';
+}
+
+// Clicking the start/stop button will run/stop the stopwatch function
 startButtonElement.addEventListener('click', stopwatch);
+
+// Clicking the reset button will stop the stopwatch and clear the clock
+resetButtonElement.addEventListener('click', reset);
