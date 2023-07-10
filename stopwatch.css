@@ -5,11 +5,13 @@ body {
   margin-top: 150px;
 }
 
+/* Centers all elements on the page */
 .clock, .buttons-container {
   display: flex;
   justify-content: center;
 }
 
+/* Prevents unnecessary spaces between clock elements */
 .clock-child {
   display: inline-block;
 }
@@ -25,11 +27,13 @@ body {
   border-radius: 3px;
 }
 
+/* Styling for Start/Stop button */
 .buttons:first-of-type {
   margin-right: 50px;
   background-color: rgb(111, 111, 190);
 }
 
+/* Styling for Reset button */
 .buttons:nth-child(2) {
   color: black;
   background-color: rgb(185, 185, 189);
