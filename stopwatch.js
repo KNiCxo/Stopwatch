@@ -1,4 +1,4 @@
-// Digit elements for stopwatch
+// Digit elements
 const digitOne = document.querySelector('.js-milliseconds-one');
 const digitTwo = document.querySelector('.js-milliseconds-two');
 const digitThree = document.querySelector('.js-second-one');
@@ -7,7 +7,7 @@ const digitFive = document.querySelector('.js-minute-one');
 const digitSix = document.querySelector('.js-minute-two');
 const additionalClock = document.querySelector('.js-additional-clock');
 
-// Button elemenents for stopwatch
+// Button elemenents
 const startButtonElement = document.querySelector('.js-start-button');
 const resetButtonElement = document.querySelector('.js-reset-button');
 
@@ -46,11 +46,20 @@ const stopwatch = () => {
       digitSix.innerHTML = Math.floor((timeBank + timeElapsed) / 600000) % 6; // 10 minutes
 
       // If time has elapsed to an hour, adds additionals clock element
-      if (timeElapsed > 3600000) {
+      if (timeBank + timeElapsed > 3600000) {
         additionalClock.innerHTML = `
           <span>${Math.floor((timeBank + timeElapsed) / 3600000)}</span>
           <span>:</span> 
         `;
+      }
+
+      // Shows stopwatch clock on webpage title
+      if (timeBank + timeElapsed < 3600000) {
+        // Clock for < 1 hour
+        document.title = `${Math.floor((timeBank + timeElapsed) / 600000) % 6}${Math.floor((timeBank + timeElapsed) / 60000) % 10}:${Math.floor((timeBank + timeElapsed) / 10000) % 6}${Math.floor((timeBank + timeElapsed) / 1000) % 10} - Stopwatch`;
+      } else {
+        // Clock for >= 1 hour
+        document.title = `${Math.floor((timeBank + timeElapsed) / 3600000)}:${Math.floor((timeBank + timeElapsed) / 600000) % 6}${Math.floor((timeBank + timeElapsed) / 60000) % 10}:${Math.floor((timeBank + timeElapsed) / 10000) % 6}${Math.floor((timeBank + timeElapsed) / 1000) % 10} - Stopwatch`;
       }
     }, 1);
   } else {
