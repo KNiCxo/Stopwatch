@@ -45,20 +45,17 @@ const stopwatch = () => {
       digitFive.innerHTML = Math.floor((timeBank + timeElapsed) / 60000) % 10; // 1 minute
       digitSix.innerHTML = Math.floor((timeBank + timeElapsed) / 600000) % 6; // 10 minutes
 
-      // If time has elapsed to an hour, adds additionals clock element
-      if (timeBank + timeElapsed > 3600000) {
-        additionalClock.innerHTML = `
-          <span>${Math.floor((timeBank + timeElapsed) / 3600000)}</span>
-          <span>:</span> 
-        `;
-      }
-
       // Shows stopwatch clock on webpage title
       if (timeBank + timeElapsed < 3600000) {
         // Clock for < 1 hour
         document.title = `${Math.floor((timeBank + timeElapsed) / 600000) % 6}${Math.floor((timeBank + timeElapsed) / 60000) % 10}:${Math.floor((timeBank + timeElapsed) / 10000) % 6}${Math.floor((timeBank + timeElapsed) / 1000) % 10} - Stopwatch`;
       } else {
-        // Clock for >= 1 hour
+        // Additional clock elements for >= 1 hour
+        additionalClock.innerHTML = `
+          <span>${Math.floor((timeBank + timeElapsed) / 3600000)}</span>
+          <span>:</span> 
+        `;
+
         document.title = `${Math.floor((timeBank + timeElapsed) / 3600000)}:${Math.floor((timeBank + timeElapsed) / 600000) % 6}${Math.floor((timeBank + timeElapsed) / 60000) % 10}:${Math.floor((timeBank + timeElapsed) / 10000) % 6}${Math.floor((timeBank + timeElapsed) / 1000) % 10} - Stopwatch`;
       }
     }, 1);
@@ -88,6 +85,7 @@ function stop() {
   isOn = false;
   clearInterval(intervalID);
   startButtonElement.innerHTML = 'Start';
+  document.title = 'Stopwatch';
 }
 
 // Clicking the start/stop button will run/stop the stopwatch function
