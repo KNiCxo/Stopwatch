@@ -101,6 +101,16 @@ input, select {
     vertical-align:middle;
 }
 
+@font-face {
+  src: url(fonts/Roboto/Roboto-Thin.ttf);
+  font-family: roboto-thin;
+}
+
+@font-face {
+  src: url(fonts/Oswald/static/Oswald-Regular.ttf);
+  font-family: oswald-regular;
+}
+
 body {
   background-color: rgb(45, 42, 42);
   color: white;
@@ -114,16 +124,16 @@ body {
   justify-content: center;
 }
 
-/* Prevents unnecessary spaces between clock elements */
-.clock-child {
-  display: inline-block;
+.clock {
+  font-family: roboto-thin;
 }
 
 .buttons{
-  height: 50px;
-  width: 120px;
-  font-size: 20px;
-  margin-top: 50px;
+  height: 70px;
+  width: 140px;
+  font-size: 35px;
+  font-family: oswald-regular;
+  margin-top: 100px;
   cursor: pointer;
   color: white;
   border: none;
