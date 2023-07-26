@@ -66,8 +66,8 @@ const stopwatch = () => {
   }
 }
 
+// Stops stopwatch if running, sets timeBank to 0, and clears clock HTML
 const reset = () => {
-  // Stops stopwatch if running, sets timeBank to 0, and clears clock HTML
   stop();
   timeBank = 0;
 
@@ -80,8 +80,8 @@ const reset = () => {
   additionalClock.innerHTML = ''
 }
 
+// Stops stopwatch and changes stop button to 'Start'
 function stop() {
-  // Stops stopwatch and changes stop button to 'Start'
   isOn = false;
   clearInterval(intervalID);
   startButtonElement.innerHTML = 'Start';
