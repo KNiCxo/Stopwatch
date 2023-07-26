@@ -23,6 +23,7 @@ let timeBank = 0;
 // Stores time elapsed while stopwatch is running
 let timeElapsed = 0;
 
+// Main function of stopwatch
 const stopwatch = () => {
   // Get current time to compare between each interval
   let startTime = Date.now();

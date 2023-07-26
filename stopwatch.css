@@ -1,8 +1,10 @@
+/* Roboto Thin font initialization*/
 @font-face {
   src: url(fonts/Roboto/Roboto-Thin.ttf);
   font-family: roboto-thin;
 }
 
+/* Oswald Regular font initialization*/
 @font-face {
   src: url(fonts/Oswald/static/Oswald-Regular.ttf);
   font-family: oswald-regular;
@@ -21,10 +23,12 @@ body {
   justify-content: center;
 }
 
+/* Styling for clock elements */
 .clock {
   font-family: roboto-thin;
 }
 
+/* Styling for all buttons */
 .buttons{
   height: 70px;
   width: 140px;
