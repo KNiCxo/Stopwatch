@@ -47,8 +47,17 @@ body {
   background-color: rgb(111, 111, 190);
 }
 
+.buttons:first-of-type:hover {
+  background-color: rgb(138, 138, 226);
+}
+
 /* Styling for Reset button */
 .buttons:nth-child(2) {
   color: black;
   background-color: rgb(185, 185, 189);
+}
+
+.buttons:nth-child(2):hover {
+  color: black;
+  background-color: rgb(240, 240, 245);
 }
