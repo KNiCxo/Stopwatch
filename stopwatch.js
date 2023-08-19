@@ -53,8 +53,7 @@ const stopwatch = () => {
       } else {
         // Additional clock elements for >= 1 hour
         additionalClock.innerHTML = `
-          <span>${Math.floor((timeBank + timeElapsed) / 3600000)}</span>
-          <span>:</span> 
+          <span class"additional-time">${Math.floor((timeBank + timeElapsed)/3600000)}</span><span>:</span> 
         `;
 
         document.title = `${Math.floor((timeBank + timeElapsed) / 3600000)}:${Math.floor((timeBank + timeElapsed) / 600000) % 6}${Math.floor((timeBank + timeElapsed) / 60000) % 10}:${Math.floor((timeBank + timeElapsed) / 10000) % 6}${Math.floor((timeBank + timeElapsed) / 1000) % 10} - Stopwatch`;
