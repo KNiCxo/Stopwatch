@@ -68,7 +68,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 810px) {
+@media only screen and (min-width: 800px) {
   body {
     font-size: 130px;
   }
@@ -81,7 +81,7 @@ body {
 }
 
 /* Styling for different heights */
-@media only screen and (min-height: 854px) {
+@media only screen and (min-height: 844px) {
   body {
     margin-top: 275px;
   }
